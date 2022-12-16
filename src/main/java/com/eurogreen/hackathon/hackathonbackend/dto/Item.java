@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Item {
 
-    private String title;
-    private String link;
-    private String image;
-    private String price;
+  private String title;
+  private String link;
+  private String image;
+  private String description;
 }

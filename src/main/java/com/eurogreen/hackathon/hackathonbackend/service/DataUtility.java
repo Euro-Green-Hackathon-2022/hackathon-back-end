@@ -30,6 +30,6 @@ public class DataUtility {
     }
 
     private static Item createItem(String title, String link, String image, String price ) {
-        return Item.builder().title(title).link(link).image(image).price(price).build();
+        return Item.builder().title(title).link(link).image(image).build();
     }
 }

@@ -18,9 +18,7 @@ public class CoordinationService {
     public List<GiftSuggestion> getSuggestions(String relation, int age, String keywords, int maxPrice) {
         List<String> giftSuggestions = openAiService.getGiftSuggestions(relation, age, keywords, maxPrice);
 
-        List<GiftSuggestion> items = searchService.search(giftSuggestions, maxPrice);
-
-        return DataUtility.getData();
+        return searchService.search(giftSuggestions, maxPrice);
     }
 
 }
