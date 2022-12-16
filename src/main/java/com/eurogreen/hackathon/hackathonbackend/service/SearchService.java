@@ -44,8 +44,7 @@ public class SearchService {
           .stream()
           .map(this::mapToItem)
           .filter(nullItemPredicate())
-          .toList()
-          .subList(0, 3);
+          .toList();
 
       return GiftSuggestion.builder().keyword(suggestion).items(items).build();
     }
