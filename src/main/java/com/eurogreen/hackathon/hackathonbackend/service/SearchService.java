@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.eurogreen.hackathon.hackathonbackend.dto.GiftSuggestion;
 import com.eurogreen.hackathon.hackathonbackend.dto.Item;
 import com.eurogreen.hackathon.hackathonbackend.dto.google.Metatag;
+import com.eurogreen.hackathon.hackathonbackend.dto.google.SearchResult;
 import com.eurogreen.hackathon.hackathonbackend.dto.google.SearchResultItem;
 import com.eurogreen.hackathon.hackathonbackend.google.GoogleSearchClient;
 
@@ -38,15 +39,12 @@ public class SearchService {
     String query = String.format("\"%s\" $0...$%s site:%s", suggestion, maxPrice, AMAZON_SITE);
 
     try {
-      List<Item> items = googleSearchClient
-          .getRetailOrder(GOOGLE_CONTEXT, GOOGLE_KEY, query)
-          .execute()
-          .body()
-          .getItems()
-          .stream()
-          .map(this::mapToItem)
-          .filter(nullItemPredicate())
-          .toList();
+      SearchResult response = googleSearchClient.getRetailOrder(GOOGLE_CONTEXT, GOOGLE_KEY, query).execute().body();
+      if (response == null) {
+        return null;
+      }
+
+      List<Item> items = response.getItems().stream().map(this::mapToItem).filter(nullItemPredicate()).toList();
 
       return GiftSuggestion.builder().keyword(suggestion).items(items).build();
     }
