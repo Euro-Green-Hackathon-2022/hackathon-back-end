@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 public interface ChatGpt {
 
-    @Headers({"Content-Type: application/json", "Authorization: Bearer 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"})
+    @Headers({"Content-Type: application/json", "Authorization: Bearer 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"})
     @POST("v1/completions")
     public Call<ChatGptResponse> getSuggestions(@Body ChatGptRequest openAiRequest);
 }

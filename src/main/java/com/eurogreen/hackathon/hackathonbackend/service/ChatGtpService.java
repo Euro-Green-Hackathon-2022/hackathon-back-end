@@ -22,7 +22,7 @@ public class ChatGtpService {
     private final ChatGpt chatGpt;
 
     public List<String> getGiftSuggestions(String relation, int age, String keywords, int maxPrice) {
-        String query = String.format("Suggest Christmas gifts for a %s aged %s, who likes %s, under %s euro as single words", relation, age, keywords, maxPrice);
+        String query = String.format("Suggest Christmas gifts for a %s aged %s, who likes %s, under %s euro as single words as a csv", relation, age, keywords, maxPrice);
         ChatGptRequest request = ChatGptRequest.builder()
                 .model("text-davinci-003")
                 .prompt(query).temperature(0).max_tokens(20).build();
@@ -44,6 +44,7 @@ public class ChatGtpService {
         if (response.charAt(response.length()-1) == '.') {
             response = response.substring(0, response.length()-1);
         }
+        log.info(response);
         String[] choices = response.trim().split(",");
         List<String> list = Arrays.asList(choices);
         return list.stream().limit(3).collect(Collectors.toList());
