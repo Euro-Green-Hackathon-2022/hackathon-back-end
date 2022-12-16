@@ -29,6 +29,8 @@ public class SearchService {
   private final GoogleSearchClient googleSearchClient;
 
   public List<GiftSuggestion> search(List<String> suggestions, int maxPrice) {
+    log.info("Suggestions: %s", suggestions);
+
     return suggestions.stream().map(s -> getSuggestion(s, maxPrice)).toList();
   }
 
