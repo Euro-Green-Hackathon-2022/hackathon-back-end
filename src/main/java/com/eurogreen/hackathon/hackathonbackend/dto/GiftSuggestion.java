@@ -1,7 +1,15 @@
 package com.eurogreen.hackathon.hackathonbackend.dto;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
+@Data
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class GiftSuggestion {
     String keyword;
     List<Item> items;

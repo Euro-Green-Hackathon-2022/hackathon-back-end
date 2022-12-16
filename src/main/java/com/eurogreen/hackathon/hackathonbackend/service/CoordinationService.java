@@ -20,10 +20,6 @@ public class CoordinationService {
         List<String> giftSuggestions = openAiService.getGiftSuggestions(relation, age, keywords, maxPrice);
 
         List<GiftSuggestion> items = searchService.search(giftSuggestions, maxPrice);
-        //call out to api
-        List<String> list = new ArrayList();
-        list.add("shoes");
-        list.add("jumper");
 
         return DataUtility.getData();
     }
