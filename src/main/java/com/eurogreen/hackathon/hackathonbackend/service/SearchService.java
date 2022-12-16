@@ -22,8 +22,8 @@ import com.eurogreen.hackathon.hackathonbackend.google.GoogleSearchClient;
 public class SearchService {
 
   //The identifier of the Programmable Search Engine.
-  public static final String GOOGLE_CONTEXT = "0654b4984dad64748";
-  public static final String GOOGLE_KEY = "AIzaSyBlkt_0pe136kBwzq0y9S76KinMndijzUw";
+  public static final String GOOGLE_CONTEXT = "f6a0c8015587643be";
+  public static final String GOOGLE_KEY = "AIzaSyDDWqw_3n7v1xRG5S9N7_p-yNV-r8M920k";
   private static final String AMAZON_SITE = "amazon.com";
 
   private final GoogleSearchClient googleSearchClient;
