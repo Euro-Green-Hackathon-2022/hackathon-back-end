@@ -62,7 +62,8 @@ public class SearchService {
 
   private Item mapToItem(SearchResultItem searchResultItem) {
     //Only 1 Metatag per search result
-    Metatag metatag = searchResultItem.getPagemap().getMetatags().get(0);
+    List<Metatag> metatags = searchResultItem.getPagemap().getMetatags();
+    Metatag metatag = metatags != null ? metatags.get(0) : null;
 
     String title = determineTitle(searchResultItem, metatag);
     String description = determineDescription(searchResultItem, metatag);
@@ -74,7 +75,7 @@ public class SearchService {
 
   private String determineTitle(SearchResultItem searchResultItem, Metatag metatag) {
     String titleDelimiter = " ... - Amazon.com";
-    if (metatag.getTitle() != null) {
+    if (metatag != null && metatag.getTitle() != null) {
       return metatag.getTitle().replace(titleDelimiter, "");
     }
 
@@ -83,7 +84,7 @@ public class SearchService {
 
   private String determineDescription(SearchResultItem searchResultItem, Metatag metatag) {
     String descriptionDelimiter = "Amazon.com: ";
-    if (metatag.getDescription() != null) {
+    if (metatag != null && metatag.getDescription() != null) {
       return metatag.getDescription().replace(descriptionDelimiter, "");
     }
 
@@ -91,7 +92,7 @@ public class SearchService {
   }
 
   private String determineLink(SearchResultItem searchResultItem, Metatag metatag) {
-    if (metatag.getUrl() != null) {
+    if (metatag != null && metatag.getUrl() != null) {
       return metatag.getUrl();
     }
 
@@ -99,7 +100,7 @@ public class SearchService {
   }
 
   private String determineImageLink(SearchResultItem searchResultItem, Metatag metatag) {
-    if (metatag.getImage() != null) {
+    if (metatag != null && metatag.getImage() != null) {
       return metatag.getImage();
     }
 
